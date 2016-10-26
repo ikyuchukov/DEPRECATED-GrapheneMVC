@@ -1,0 +1,10 @@
+RewriteEngine on
+
+#don't rewrite assets and uploads urls
+RewriteRule ^uploads - [L,NC]
+RewriteRule ^assets - [L,NC]
+RewriteCond $1 !^(index\.php|images|robots\.txt)
+#don't rewrite .html and .xml files 
+RewriteCond %{REQUEST_URI} !.*\.html
+RewriteCond %{REQUEST_URI} !.*\.xml
+RewriteRule ^(.*)$ /index.php/$1 [L]
