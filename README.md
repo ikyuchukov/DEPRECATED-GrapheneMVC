@@ -1,4 +1,4 @@
-#Graphene MVC 
+#GrapheneMVC 
 
 GrapheneMVC is a lightweight "barebones" MVC Framework for PHP. It provides the developer with the basic MVC package without too much "bloat", besides the obvious Models, Controllers, Views it provides basic functions such as Library loader, URL checker/segmenter, Pagination library, prettier var_dumps and some input sanization. 
 
@@ -28,30 +28,32 @@ If you can emulate the mod_rewrite rules in the .htaccess on another web server(
 
 By default controllers/Home_controller.php is loaded, if you wish to change this, you can do so from the $home_controller var in the config file.
 
-The configuration file is located at config/config.php
+The configuration file is located at 
+	config/config.php
 
 From the controller you can load your models and views as needed, an example is includes in the default controller.
 
 Loading models:
 
 //we set the model object in a var
-
+```php
 $this->example = $this->model->load('Example');
-
+```
 We can pass data to the model as well (even if rarely needed), it works the same as the below example with the views.
 
 Loading views is just:
-
+```php
 $this->view->load('Example');
-
+```
 If you wish to pass data to the view (which you will most likely), you can set the data array as the second argument:
-
+```php
 $this->view->load('Example', $this->data);
-
+```
 Note:
 
 The data array will be extracted for easier usage, for example if we have the following:
 
+```php
 $this->data = array (
 	'users' => array (
 		'1' => 'Winston Smith',
@@ -59,6 +61,7 @@ $this->data = array (
 		'n' => 'Ben Kenobi',		
 		),
 	);
+```
 
 The users var will be available in the view by just $users.
 
@@ -74,7 +77,7 @@ Example controller named Login:
 
 File would be:
 
-/controllers/Login_controller.php
+	/controllers/Login_controller.php
 
 In the file we see:
 
@@ -90,9 +93,9 @@ That's it!
 
 For models it would be:
 
-```php
-/models/Login_model.php
 
+	/models/Login_model.php
+```php
 <?php
 
 Class Login extends Model {
@@ -102,15 +105,17 @@ Class Login extends Model {
 
 Creating views is even simpler, just create the file and load it in your controller as mentioned above:
 
-/views/Login_view.php	
+	/views/Login_view.php	
 
 
 ##Database Configuration
 
 The database details can be found at the config file and are pretty straith forward, note that if the default database user isn't changed a connection to the database will not be attempted.
 
-The database connection is made via PDO and the PDO instance is available at the model with $this->db. 
-
+The database connection is made via PDO and the PDO instance is available at the model with:
+```php
+$this->db 
+```
 As PDO is used, you can use the framework with any type of database supported by your PHP's PDO extensions.
 
 Note:
@@ -129,6 +134,8 @@ Library file is at:
 ```
 /lib/Security.php
 ```
+in the controller we have:
+
 ```php
 $library_name = 'Security';
 $this->loadLibrary($library_name);
@@ -150,7 +157,11 @@ The library's class is "Secure":
 $this->loadLibrary($library_name, 'Secure');
 ```
 
-The object will now be $this=>secure.
+The object will now be 
+
+```php
+$this=>secure.
+```
 
 ##Autoloading Libraries
 
@@ -168,10 +179,10 @@ If you are debugging something and want the variables to be shown in a formatted
 
 ```php
 //dumps the current var
-	prettyDump($var);
+prettyDump($var);
 
 //dumps the var and die()s.
-	prettyDie($var);
+prettyDie($var);
 ```
 
 Sanization functions:
@@ -179,12 +190,12 @@ Sanization functions:
 ```php
 //sanitize variable for special chars and whitespace
 //leaves underscore '_'
-	alphaNum($var);
+alphaNum($var);
 
 
 //sanitize multidimensional array for special chars and whitespace
 //leaves underscore '_'
-	alphaNumArray($array);
+alphaNumArray($array);
 ```
 
 Current URL can be gotten via:
