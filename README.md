@@ -8,7 +8,7 @@ Well like graphene the framework is pretty light, small (archive is under 15kb) 
 
 ##Requirements 
 
-PHP 5.5
+PHP 5.5+
 
 Apache with mod_rewrite
 
@@ -35,8 +35,8 @@ From the controller you can load your models and views as needed, an example is 
 
 Loading models:
 
-//we set the model object in a var
 ```php
+//we set the model object in a var
 $this->example = $this->model->load('Example');
 ```
 We can pass data to the model as well (even if rarely needed), it works the same as the below example with the views.
