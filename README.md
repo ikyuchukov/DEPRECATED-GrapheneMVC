@@ -1,4 +1,4 @@
-##Graphene MVC 
+#Graphene MVC 
 
 GrapheneMVC is a lightweight "barebones" MVC Framework for PHP. It provides the developer with the basic MVC package without too much "bloat", besides the obvious Models, Controllers, Views it provides basic functions such as Library loader, URL checker/segmenter, Pagination library, prettier var_dumps and some input sanization. 
 
@@ -9,9 +9,11 @@ Well like graphene the framework is pretty light, small (archive is under 15kb) 
 ##Requirements 
 
 PHP 5.5
+
 Apache with mod_rewrite
 
 Note:
+
 If you can emulate the mod_rewrite rules in the .htaccess on another web server(nginx), go for it!
 
 ##Installation 
@@ -33,6 +35,7 @@ From the controller you can load your models and views as needed, an example is 
 Loading models:
 
 //we set the model object in a var
+
 $this->example = $this->model->load('Example');
 
 We can pass data to the model as well (even if rarely needed), it works the same as the below example with the views.
@@ -46,6 +49,7 @@ If you wish to pass data to the view (which you will most likely), you can set t
 $this->view->load('Example', $this->data);
 
 Note:
+
 The data array will be extracted for easier usage, for example if we have the following:
 
 $this->data = array (
@@ -69,21 +73,24 @@ To create Controllers or Models just navigate to the Controllers/Model folder an
 Example controller named Login:
 
 File would be:
+
 /controllers/Login_controller.php
 
 In the file we see:
 
+```php
 <?php
 
 Class Login extends Controller {
 
 }
-
+```
 
 That's it!
 
 For models it would be:
 
+```php
 /models/Login_model.php
 
 <?php
@@ -91,7 +98,7 @@ For models it would be:
 Class Login extends Model {
 
 }
-
+```
 
 Creating views is even simpler, just create the file and load it in your controller as mentioned above:
 
@@ -103,9 +110,11 @@ Creating views is even simpler, just create the file and load it in your control
 The database details can be found at the config file and are pretty straith forward, note that if the default database user isn't changed a connection to the database will not be attempted.
 
 The database connection is made via PDO and the PDO instance is available at the model with $this->db. 
+
 As PDO is used, you can use the framework with any type of database supported by your PHP's PDO extensions.
 
 Note:
+
 SQLite isn't currenly supported as the PDO details function must be tweaked a bit, will do this on next update.
 
 No database abstraction is made outside this, as PDO's functions are most of the time enough. However if you wish to make your own functions database abstraction functions which are then available in all models you can create them at src/Model.php.
@@ -116,10 +125,14 @@ No database abstraction is made outside this, as PDO's functions are most of the
 External libraries can be added in the lib folder and loaded from your controller via:
 
 Library file is at:
-/lib/Security.php
 
+```
+/lib/Security.php
+```
+```php
 $library_name = 'Security';
 $this->loadLibrary($library_name);
+```
 
 The library will be loaded as well with a class object of it at $this->library_name;
 
@@ -127,11 +140,15 @@ If the library's name is not the same as it's class you can load it with a secon
 
 Example:
 
+```php
 $library_name = "Security";
+```
 
 The library's class is "Secure":
 
+```php
 $this->loadLibrary($library_name, 'Secure');
+```
 
 The object will now be $this=>secure.
 
@@ -148,13 +165,18 @@ Currently autoloading libraries with different class names is not supported, wil
 ##Other Functions
 
 If you are debugging something and want the variables to be shown in a formatted matter you can use:
+
+```php
 //dumps the current var
 	prettyDump($var);
 
 //dumps the var and die()s.
 	prettyDie($var);
+```
 
 Sanization functions:
+
+```php
 //sanitize variable for special chars and whitespace
 //leaves underscore '_'
 	alphaNum($var);
@@ -163,6 +185,7 @@ Sanization functions:
 //sanitize multidimensional array for special chars and whitespace
 //leaves underscore '_'
 	alphaNumArray($array);
+```
 
 Current URL can be gotten via:
 
@@ -174,6 +197,7 @@ You can make the URL into an array with segments via:
 
 
 For the Pagination library, please check my repo for it:
+
 https://github.com/ikyuchukov/iziPagination
 
 ##Extending the basic Controller and Model
@@ -194,6 +218,7 @@ Autoloading libraries with different class names.
 ##Version 1.0
 
 ##License 
+
 GrapheneMVC is licensed under BSD 3.0
 
 
