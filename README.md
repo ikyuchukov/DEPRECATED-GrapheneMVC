@@ -169,10 +169,6 @@ You will most likely want a library that should be autoloaded for every class.
 
 If you wish to autload a library, just add it to the autoload in the config file and Graphene will do it for you.
 
-Note:
-Currently autoloading libraries with different class names is not supported, will be updated into next release.
-
-
 ##Other Functions
 
 If you are debugging something and want the variables to be shown in a formatted matter you can use:
@@ -223,10 +219,10 @@ Autoloader to be PSR-4 compliant.
 
 SQLite connection without user workaround.
 
-Autoloading libraries with different class names.
 
+##Version 1.01
 
-##Version 1.0
+Added autoloading of Libraries with different class names. Check config/autoload.php for more details.
 
 ##License 
 
