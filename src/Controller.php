@@ -17,8 +17,8 @@ Class Controller {
 		}
 
 	}	private function autoload($libraries){
-		foreach ($libraries as $lib){
-			loadLibrary($lib);
+		foreach ($libraries as $lib_name -> $autoload){
+			loadLibrary($lib_name, $autoload);
 		}	
 	}
 	function loadLibrary($library, $autoload_class = TRUE){
